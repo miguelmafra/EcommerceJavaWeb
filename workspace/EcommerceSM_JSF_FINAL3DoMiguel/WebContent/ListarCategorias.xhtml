@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8" />
+
+	<title>Listar Categorias</title>
+</h:head>
+<h:body>
+	<ui:composition template="AdminTemplate.xhtml">
+		<ui:define name="conteudoCentral">
+			<p:dataTable style="text-align:center" var="categorias" value="#{mCategoriaBean.categorias}">
+				<p:column headerText="Categoria">
+					<h:outputText value="#{categorias.nome}" />
+				</p:column>
+				<p:column headerText="Descrição">
+					<h:outputText value="#{categorias.descricao}" />
+				</p:column>
+					<p:column headerText="Editar">
+					<p:commandLink value="Remover"
+						action="#{mCategoriaBean.removerCategoria(categorias)}" />
+					<p:commandLink value="Alterar"
+						action="#{mCategoriaBean.alterarCategoria(categorias)}" />
+				</p:column>
+			</p:dataTable>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

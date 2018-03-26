@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<meta charset="UTF-8" />
+	<title>E-commerce</title>
+</h:head>
+<h:body>
+	<!-- NAVBAR -->
+	<h:form>
+		<p:menubar>
+			<p:menuitem value="Início" url="Inicio.xhtml"></p:menuitem>
+			<p:menuitem value="Área Comercial" url="AreaComercial.xhtml"></p:menuitem>
+			<p:menuitem value="Área Administrativa"
+				url="AreaAdministrativa.xhtml"></p:menuitem>
+				<p:menuitem value="Carrinho de Compras" url="CarrinhoDeCompras.xhtml"></p:menuitem>
+		</p:menubar>
+	</h:form>
+	<!-- FIM NAVBAR -->
+
+	<div id="conteudo" style="margin: 70px">
+		<!-- Componente que possibilita colocar o conteúdo das páginas -->
+		<ui:insert name="conteudoCentral" />
+	</div>
+
+	<footer style="position:absolute; bottom:0; width:100%">
+	<hr />
+		<p:outputLabel style="font-size:15px" value="Developed by E-commerce Stock Management" ></p:outputLabel>
+		
+	</footer>
+</h:body>
+</html>

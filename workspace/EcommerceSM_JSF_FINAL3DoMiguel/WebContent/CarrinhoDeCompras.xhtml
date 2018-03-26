@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8" />
+
+	<title>Carrinho de Compras</title>
+</h:head>
+<h:body>
+	<ui:composition template="ComercialTemplate.xhtml">
+		<ui:define name="conteudoCentral">
+			<p:dataTable style="text-align:center" var="itens"
+				value="#{mItemVendaBean.itens}">
+				<p:column headerText="Nome">
+					<h:outputText value="#{itens.produto.nome}" />
+				</p:column>
+				<p:column headerText="Preço">
+					<h:outputText value="#{itens.produto.preco}" />
+				</p:column>
+				<p:column headerText="Quantidade">
+					<p:inputText value="#{itens.quantidade}"></p:inputText>
+				</p:column>
+				<p:column headerText="Total">
+					<h:outputText
+						value="#{(mItemVendaBean.quantidade)*(itens.produto.preco)}" />
+				</p:column>
+				<p:column headerText="Editar">
+					<p:commandButton value="Remover"
+						action="#{mItemVendaBean.removerItens(itens)}" />
+					<br></br>
+				</p:column>
+			</p:dataTable>
+			<br></br>
+			<h:form>
+			<p:panel header="Cliente">
+				<h:panelGrid >
+					<p:selectOneMenu value="#{mVendaBean.idCliente}"
+						style="width:125px">
+						<br></br>
+						<f:selectItem itemLabel="Selecione" itemValue="0"></f:selectItem>
+						<f:selectItems value="#{mClienteBean.clientes}"
+							var="clienteCadastrado" itemLabel="#{clienteCadastrado.nome}"
+							itemValue="#{clienteCadastrado.id}">
+						</f:selectItems>
+					</p:selectOneMenu>
+
+					<br></br>
+					<p:commandButton value="Finalizar Compra"
+						action="#{mVendaBean.adicionarVenda()}">
+					</p:commandButton>
+				</h:panelGrid>
+				</p:panel>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8" />
+
+	<title>Área Comercial</title>
+</h:head>
+<h:body>
+	<ui:composition template="ComercialTemplate.xhtml">
+		<ui:define name="conteudoCentral">
+			<p:dataTable style="text-align:center" var="produtos"
+				value="#{mProdutoBean.produtos}">
+				<p:column headerText="Nome">
+					<h:outputText value="#{produtos.nome}" />
+				</p:column>
+
+				<p:column headerText="Preço">
+					<h:outputText value="#{produtos.preco}" />
+				</p:column>
+
+				<p:column headerText="Categoria">
+					<h:outputText value="#{produtos.categoria.nome}" />
+				</p:column>
+
+				<p:column headerText="Marca">
+					<h:outputText value="#{produtos.marca.nome}" />
+				</p:column>
+
+				<p:column headerText="Adicionar ao carrinho">
+					<h:form>
+
+						<p:commandButton value="Adicionar"
+							styleClass="ui-priority-primary"
+							action="#{mItemVendaBean.adicionarItemVenda(produtos)}" />
+					</h:form>
+				</p:column>
+			</p:dataTable>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Cadastrar Marca</title>
+</h:head>
+<h:body>
+	<ui:composition template="AdminTemplate.xhtml">
+		<ui:define name="conteudoCentral">
+		
+			<h:form>
+			<p:messages id="messages"
+					closable="true" value="Error" actionListener="#{mMessagesBean.error}" />
+				<h:panelGrid columns="2">
+					<p:outputLabel value="Nome"></p:outputLabel>
+					<p:inputText pt:placeholder="Nome da Marca"
+						value="#{mMarcaBean.marca.nome}"></p:inputText>
+					<p:outputLabel value="Endereço"></p:outputLabel>
+					<p:inputText id="enderecomarca" value="#{mMarcaBean.marca.endereco}"
+						pt:placeholder="Endereço da marca"><p:message for="enderecomarca" display="text" /></p:inputText>
+
+					<p:commandButton value="Cadastrar Marca"
+						action="#{mMarcaBean.adicionarMarca(mMarcaBean.marca)}" actionListener="#{mMessagesBean.error}"></p:commandButton>
+				</h:panelGrid>
+				
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
